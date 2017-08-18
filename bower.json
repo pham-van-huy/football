@@ -1,0 +1,22 @@
+{
+  "name": "football",
+  "description": "",
+  "main": "bower.json",
+  "authors": [
+    "MinhTri1911 <huynh.ngoc.minh.tri@framgia.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "bower.json"
+  ],
+  "homepage": "https://github.com/MinhTri1911/football",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower/",
+    "test",
+    "tests"
+  ]
+}
