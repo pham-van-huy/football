@@ -20,3 +20,63 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+var axios = require('axios')
+
+$(document).ready(function() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+})
+
+$(document).ready(function(){
+    axios.get('/api/get-userId')
+        .then(response => {
+            console.log(response.data)
+        })
+    // axios.get('/oauth/clients')
+    //     .then(response => {
+    //         console.log(response.data);
+    //     })
+
+    // axios.get('/api/loginDemo')
+    //     .then(response => {
+    //         console.log(response.data);
+    //     })
+
+
+
+
+})
+
+// console.log($('meta[name="csrf-token"]').attr('content'))
+// window.axios.defaults.headers.common['X-CSRF-TOKEN'] = $('meta[name="csrf-token"]').attr('content')
+
+$('#bt-login').on('click', function () {
+    //  const form_params = {
+    //         grant_type: 'password',
+    //         client_id: '4',
+    //         client_secret: 'yCxEgvOhoag9O24bhvYLs8lIzZtXextMlxRf7Qxn',
+    //         username: 'admin@gmail.com',
+    //         password: '123123',
+    //         scope: '',
+    //     }
+
+    // axios.post('/oauth/token', { data: form_params })
+    //     .then(response => {
+    //         console.log(response.data);
+    //     })
+    //  axios.post('api/loginDemo', { email: $('#email').val(), password: $('#password').val() })
+    //     .then(res => {
+    //         console.log(res)
+    //         axios.get('api/demo')
+    //             .then(res => {
+    //                 console.log(res)
+    //             })
+    //     })
+    $.post('api/loginDemo', { email: $('#email').val(), password: $('#password').val() }, function (data) {
+        console.log(data)
+    })
+})
