@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('example', require('./components/Example.vue'));
+Vue.component('chat', require('./components/GuestChat.vue'));
 
 const app = new Vue({
     el: '#app'
@@ -32,10 +33,7 @@ $(document).ready(function() {
 })
 
 $(document).ready(function(){
-    axios.get('/api/get-userId')
-        .then(response => {
-            console.log(response.data)
-        })
+
     // axios.get('/oauth/clients')
     //     .then(response => {
     //         console.log(response.data);
@@ -76,7 +74,17 @@ $('#bt-login').on('click', function () {
     //                 console.log(res)
     //             })
     //     })
-    $.post('api/loginDemo', { email: $('#email').val(), password: $('#password').val() }, function (data) {
-        console.log(data)
-    })
+    // $.post('api/loginDemo', { email: $('#email').val(), password: $('#password').val() }, function (data) {
+    //     console.log(data)
+    // })
+
+    axios.post('login', { email: $('#email').val(), password: $('#password').val() })
+        .then(response => {
+            // console.log(response)
+            axios.get('/get-userId')
+                .then(response => {
+                    console.log(response.data)
+                })
+            axios.get('/home')
+        })
 })

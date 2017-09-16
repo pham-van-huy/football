@@ -88,9 +88,6 @@ class LoginController extends Controller
             throw new UnknowException('User not active or credential invalid');
         }
 
-        $passport = new PassportService();
-        dd($passport->requestGrantToken($data));
-
-        return redirect()->action('Api\Auth\AuthController@login');
+        return redirect('/home');
     }
 }
